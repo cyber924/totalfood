@@ -1,0 +1,6 @@
+{
+  "name": "맛집 블로그 자동화 - BlogAi",
+  "description": "제미나이 3.6 AI 기반 맛집 블로그 글 및 9:16 쇼츠/릴스 스토리보드 영상 자동 생성 서비스",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

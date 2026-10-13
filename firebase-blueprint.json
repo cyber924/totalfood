@@ -1,0 +1,111 @@
+{
+  "entities": {
+    "users": {
+      "title": "User Profile",
+      "description": "Registered user profile information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Firebase Auth UID" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "email"]
+    },
+    "saved_posts": {
+      "title": "Saved Blog Posts",
+      "description": "Blog posts created or saved by users",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string", "description": "Owner UID" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "input": { "type": "object" },
+        "titleOptions": { "type": "array" },
+        "selectedTitle": { "type": "string" },
+        "summary": { "type": "string" },
+        "contentMarkdown": { "type": "string" },
+        "hashtags": { "type": "array" },
+        "rating": { "type": "number" },
+        "revisitIntent": { "type": "string" },
+        "imagePrompts": { "type": "array" },
+        "keyTips": { "type": "array" },
+        "seoScore": { "type": "number" }
+      },
+      "required": ["userId", "selectedTitle", "contentMarkdown"]
+    },
+    "saved_shorts": {
+      "title": "Saved Shorts Projects",
+      "description": "Shorts and Reels projects created or saved by users",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string", "description": "Owner UID" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "restaurantName": { "type": "string" },
+        "location": { "type": "string" },
+        "tone": { "type": "string" },
+        "targetDuration": { "type": "number" },
+        "title": { "type": "string" },
+        "hook": { "type": "string" },
+        "totalDuration": { "type": "number" },
+        "bgmRecommendation": { "type": "string" },
+        "hashtags": { "type": "array" },
+        "scenes": { "type": "array" },
+        "youtubeDescription": { "type": "string" },
+        "filmingTips": { "type": "array" }
+      },
+      "required": ["userId", "restaurantName", "title", "scenes"]
+    },
+    "saved_sns": {
+      "title": "Saved SNS Multi-Posts",
+      "description": "Multi-platform SNS posts created or saved by users",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string", "description": "Owner UID" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "restaurantName": { "type": "string" },
+        "location": { "type": "string" },
+        "menuItems": { "type": "string" },
+        "features": { "type": "string" },
+        "selectedPlatforms": { "type": "array" },
+        "data": { "type": "object" }
+      },
+      "required": ["userId", "restaurantName", "selectedPlatforms", "data"]
+    },
+    "shared_assets": {
+      "title": "Shared Gourmet Assets",
+      "description": "Compressed image assets shared in the gallery",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "sourceType": { "type": "string", "description": "ai, unsplash, or upload" },
+        "imageContent": { "type": "string", "description": "Base64 image string compressed under 200KB" },
+        "searchKeyword": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "isShared": { "type": "boolean" },
+        "authorEmail": { "type": "string" }
+      },
+      "required": ["sourceType", "imageContent", "searchKeyword"]
+    },
+    "scheduled_reservations": {
+      "title": "Automated Scheduled Reservations",
+      "description": "Cron-less on-access automatic reservation entries",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string", "description": "Owner UID" },
+        "topic": { "type": "string", "description": "Gourmet topic / keyword for automated publishing" },
+        "platforms": { "type": "array", "description": "Platforms to publish (e.g., ['blog', 'sns', 'shorts'])" },
+        "scheduledAt": { "type": "string", "format": "date-time", "description": "Target publishing date-time" },
+        "status": { "type": "string", "enum": ["대기", "진행중", "발행완료", "실패"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "processedAt": { "type": "string", "format": "date-time" },
+        "results": { "type": "object", "description": "References to generated documents" }
+      },
+      "required": ["userId", "topic", "platforms", "scheduledAt", "status"]
+    }
+  }
+}
